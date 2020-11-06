@@ -91,3 +91,23 @@ class Person():
 p = Person('Sam', 'P.')
 print('Hello, {0:familyfirst}'.format(p)) #Hello, P. Sam
 print('Hello, {0:givenfirst}'.format(p)) #Hello, Sam P.
+
+class Equal():
+    def __init__(self, x):
+        self.x = x
+    def __eq__(self, other):
+        return self.x == other.x
+
+f1 = Equal(10)
+f2 = Equal(10)
+
+print(f1 == f2)
+
+class Hashing():
+    def __init__(self, x):
+        self.x = x
+    def __hash__(self):
+        return hash(self.x)
+
+f = Hashing('a')
+print(hash(f))
