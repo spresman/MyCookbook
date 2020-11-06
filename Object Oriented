@@ -1,0 +1,22 @@
+class People():
+    population = 0
+    def __init__(self, first, last):
+        self.first = first
+        self.last = last
+        People.population += 1
+
+print(People.population) #0
+p1 = People('Sponge', 'Bob')
+print(p1.first) #Sponge
+print(People.population) #1
+
+class Boss(People):
+    def __init__(self, first, last, id):
+        People.__init__(self, first, last)
+        self.id = id
+
+b1 = Boss('Patrick', 'Star', 11)
+print(b1.first, b1.last, b1.id, People.population) #Patrick Star 11 2
+
+
+
