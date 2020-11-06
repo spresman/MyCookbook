@@ -20,3 +20,4 @@ print(three_full_bytes)
 
 for i in three_full_bytes:
     print(i)
+    print(' ')
