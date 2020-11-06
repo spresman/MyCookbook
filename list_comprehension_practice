@@ -1,0 +1,16 @@
+words = 'this is a bunch of words'.split()
+print(words)
+
+print(' '.join(words))
+
+input = [1, 2, 3, 4, 5]
+
+print([word.upper() for word in words])
+
+mylist = [word.upper for word in words]
+print(mylist)
+
+execute = [q() for q in mylist]
+print(execute)
+
+
