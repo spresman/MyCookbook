@@ -1,0 +1,93 @@
+class Foo():
+    def __init__(self, x):
+        self.x = x
+    def __repr__(self):
+        return 'The x is {}'.format(self.x)
+    def __len__(self):
+        return len(str(self.x))
+
+f = Foo(123)
+
+#print(f)
+
+#print(str(f))
+
+#print(repr(f))
+
+s = 'abc'
+#print(len(s))
+
+#print(len(f))
+
+class Book():
+    def __init__(self, title, author, num_pages):
+        self.title = title
+        self.author = author
+        self.num_pages = num_pages
+
+    def __len__(self):
+        return self.num_pages
+
+
+
+class Foob():
+    def __init__(self, x):
+        self.x = x
+
+    def __add__(self, other):
+        if hasattr(other, 'x'):
+            return Foob(self.x + other.x)
+        else:
+            return Foob(self.x + other)
+
+    def __radd__(self, other):
+        return self.__add__(other)
+
+    def __iadd__(self, other):
+        self.x += other.x
+        return self
+
+    def __repr__(self):
+        return 'My x is {}'.format(self.x)
+
+f2 = Foob(10)
+
+f1 = Foob(11)
+
+print(f1+f2) #My x is 21
+print(f1 + 3) #My x is 14
+print(3 + f1) #My x is 14
+
+class SeroNot():
+    def __init__(self, x):
+        self.x = x
+    def __bool__(self):
+        return bool(self.x)
+
+s = SeroNot(None)
+print(bool(s)) #False
+
+s = SeroNot(1)
+print(bool(s)) #True
+
+print('abc %s def' % 'YYY') #abc YYY def
+print('Hello, {0}. How are you today {0}?'.format('Sam'))
+    #Hello, Sam. How are you today Sam?
+print('Hello, {0:<15}. How are you today {0:>11}?'.format('Sam'))
+    #Hello, Sam            . How are you today         Sam?
+
+class Person():
+    def __init__(self, given, family):
+        self.given = given
+        self.family = family
+    def __format__(self, format):
+        if format == 'givenfirst':
+            return '{} {}'.format(self.given, self.family)
+        if format == 'familyfirst':
+            return '{} {}'.format(self.family, self.given)
+        else:
+            return 'Nah'
+
+p = Person('Sam', 'P.')
+print('Hello, {0:familyfirst}'.format(p)) #Hello, P. Sam
+print('Hello, {0:givenfirst}'.format(p)) #Hello, Sam P.
