@@ -1,0 +1,22 @@
+empty_byte = bytes(4)
+print(empty_byte)
+
+data_byte = bytes(b'\x01\x01')
+print(data_byte)
+
+
+empty = bytearray()
+print(empty)
+
+three_empty_bytes = bytearray(3)
+print(three_empty_bytes)
+
+three_full_bytes = bytearray(b'\xEF\xAD')
+print(three_full_bytes)
+
+three_full_bytes.append(240)
+
+print(three_full_bytes)
+
+for i in three_full_bytes:
+    print(i)
