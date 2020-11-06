@@ -1,0 +1,16 @@
+def a():
+    print('A time!')
+
+def b():
+    print('B time!')
+
+menu = {'a': a, 'b': b}
+
+new_dispatch = menu.keys
+print(new_dispatch())
+
+this_is_new = a
+for func in menu:
+    print(menu['a']())
+
+
