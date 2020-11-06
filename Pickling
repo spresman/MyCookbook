@@ -1,0 +1,36 @@
+import pickle
+
+d = {'a': 1, 'b': 2, 'c': 3}
+
+print(pickle.dumps(d))
+
+p = pickle.dumps(d)
+
+new_d = pickle.loads(p)
+
+if id(new_d) == id(d):
+    print('The Ids are the same: ', id(new_d))
+else:
+    print('The Ids are different: Id(new_d): {}, Id(d): {}'.format(id(new_d), id(d)))
+
+if new_d == d:
+    print('The contents are the same')
+else:
+    print('The contents are different')
+
+class Foo():
+    def __init__(self, x):
+        self.x = x
+    def __getstate__(self): #Pickling magic method
+        old_state = self.__dict__.copy()
+        old_state['y'] = self.x *2
+        return old_state
+
+f = Foo(10)
+print(f.x)
+
+print(vars(f))
+
+p = pickle.dumps(f)
+new_f = pickle.loads(p)
+print(vars(new_f))
